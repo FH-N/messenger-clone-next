@@ -21,6 +21,12 @@ const Authform = () => {
   const [variant, setVariant] = useState<variant>("LOGIN");
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    if (session?.status === "authenticated") {
+      router.push("/conversations");
+    }
+  }, [session?.status, router]);
+
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
       setVariant("REGISTER");
