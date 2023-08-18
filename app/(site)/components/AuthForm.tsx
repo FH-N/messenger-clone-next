@@ -11,7 +11,7 @@ import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 type variant = "LOGIN" | "REGISTER";
 
@@ -23,7 +23,7 @@ const Authform = () => {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.push("/conversations");
+      router.push("/users");
     }
   }, [session?.status, router]);
 
